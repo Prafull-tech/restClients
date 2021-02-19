@@ -12,7 +12,7 @@ public class ClientComponent {
 
 		WebClient webClient = WebClient.create();
 
-		Student respoMono = webClient.get() 			// for get request
+		Student respoMono = webClient.get() 		// for get request
 				.uri(endPointUrl,from,to)			// for 
 				.retrieve()							// Retrieve Response 
 				.bodyToMono(Student.class)			// Response At a time only in specific format
