@@ -3,12 +3,8 @@ package com.m3bi;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.client.RestTemplate;
 
 import com.m3bi.clientApp.ClientComponent;
-import com.m3bi.clientApp.RestClient;
-import com.m3bi.clientApp.Student;
 
 @SpringBootApplication
 public class Ms4Rest1Application {
@@ -22,6 +18,7 @@ public class Ms4Rest1Application {
 
 		ClientComponent bean = ctx.getBean(ClientComponent.class);
 		bean.invokeRestApi("USD", "INR");
+		bean.invokeRestApiAsych("USD", "INR");
 		ctx.close();
 		
 	}

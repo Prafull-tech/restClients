@@ -1,5 +1,7 @@
 package com.m3bi.clientApp;
 
+import java.util.function.Consumer;
+
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -22,4 +24,24 @@ public class ClientComponent {
 		System.out.println(respoMono);
 	}
 
+	public void invokeRestApiAsych(String from,String to) {
+
+		String endPointUrl = "http://localhost:8081/currency/{from}/to/{to}";
+
+		WebClient webClient = WebClient.create();
+		System.out.println("=========================START=====================================");
+
+		webClient.get() 		// for get request
+		.uri(endPointUrl,from,to)			// for 
+		.retrieve()							// Retrieve Response 
+		.bodyToMono(Student.class)			// Response At a time only in specific format
+		.subscribe(ClientComponent::msg);// wait for Response (using lock )
+
+
+		System.out.println("==========================END=====================================");
+	}
+
+	public static void msg(Student std) {
+		System.out.println(std);
+	}
 }
