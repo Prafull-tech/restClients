@@ -16,7 +16,7 @@ public class Ms4Rest1Application {
 		ConfigurableApplicationContext run = SpringApplication.run(Ms4Rest1Application.class, args);
 		RestClient bean = run.getBean(RestClient.class);
 		//Student currencyCost = bean.getCurrencyCost("USD", "INR");
-		ResponseEntity<Student> student = bean.postStudent();
+		ResponseEntity<Student> student = bean.postStudent(new Student(110, "Maknish", "MS"));
 		System.out.println(student.getBody());
 	}
 
